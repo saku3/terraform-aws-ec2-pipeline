@@ -31,6 +31,16 @@ resource "aws_codebuild_project" "main" {
     image                       = "aws/codebuild/standard:1.0"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
+
+    environment_variable {
+      name  = "APP_NAME"
+      value = aws_codedeploy_app.main.name
+    }
+
+    environment_variable {
+      name  = "ARTIFACTS_BUCKET"
+      value = aws_s3_bucket.code_build_bucket.bucket
+    }
   }
 
   logs_config {

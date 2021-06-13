@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - aws deploy push --application-name $APP_NAME --s3-location s3://${ARTIFACTS_BUCKET}/artifact.zip --source src
+artifacts:
+  files:
+    - '**/*'
+  base-directory: src

@@ -1,6 +1,6 @@
 resource "aws_instance" "web" {
-  ami           = "ami-001f026eaf69770b4"
-  instance_type = "t2.micro"
+  ami                         = "ami-001f026eaf69770b4"
+  instance_type               = "t2.micro"
   iam_instance_profile        = aws_iam_instance_profile.instance_profile.name
   vpc_security_group_ids      = [aws_security_group.web.id]
   subnet_id                   = aws_subnet.public_subnet_1.id
@@ -75,7 +75,7 @@ resource "aws_iam_role_policy_attachment" "systems_manager_attachment" {
 }
 
 resource "aws_iam_role_policy" "s3_policy" {
-  role = aws_iam_role.role.name
+  role   = aws_iam_role.role.name
   policy = <<POLICY
 {
   "Version": "2012-10-17",
